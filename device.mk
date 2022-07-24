@@ -52,6 +52,10 @@ PRODUCT_SOONG_NAMESPACES += $(DEVICE_PATH)
 TWRP_REQUIRED_MODULES += \
     miui_prebuilt
 
+# otacert
+PRODUCT_EXTRA_RECOVERY_KEYS += \
+    $(DEVICE_PATH)/security/miui_releasekey
+
 # Additional Libraries
 TARGET_RECOVERY_DEVICE_MODULES += \
     libion \
