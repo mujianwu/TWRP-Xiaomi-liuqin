@@ -46,6 +46,7 @@ on boot
     setprop sys.usb.config adb
 
 on property:twrp.modules.loaded=true
+    start touch_report
     # Mount firmware
     mkdir /firmware
     mount vfat /dev/block/bootdevice/by-name/modem${ro.boot.slot_suffix} /firmware ro
@@ -56,3 +57,15 @@ on property:twrp.modules.loaded=true
     start health-hal-2-1
     start vibratorfeature-hal-service
     umount /firmware
+
+service touch_report /vendor/bin/touch_report
+    class hal
+    user root
+    group root uhid input
+    capabilities SYS_NICE
+    ioprio rt 4
+    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib64/hw:/system/lib64:/sbin
+    disable
+    seclabel u:r:recovery:s0
+
+import /init.recovery.qcom_decrypt.rc

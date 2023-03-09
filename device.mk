@@ -4,11 +4,13 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+DEVICE_PATH := device/xiaomi/mondrian
+
 # Configure base.mk
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 
 # Configure core_64_bit_only.mk
-$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 
 # Configure Virtual A/B
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
@@ -23,11 +25,20 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 $(call inherit-product, vendor/twrp/config/common.mk)
 
 PRODUCT_PACKAGES += \
-    bootctrl.xiaomi_sm8550.recovery \
+    android.hardware.boot@1.2-impl \
+    android.hardware.boot@1.2-impl.recovery \
+    android.hardware.boot@1.2-service \
+    android.hardware.boot@1.2-impl-wrapper.recovery \
+    android.hardware.boot@1.2-impl-wrapper \
+    android.hardware.boot@1.2-impl.recovery
+
+PRODUCT_PACKAGES += \
+    bootctrl.xiaomi_sm8475 \
+    bootctrl.xiaomi_sm8475.recovery \
     android.hardware.boot@1.2-impl-qti.recovery
 
 # SHIPPING API
-PRODUCT_SHIPPING_API_LEVEL := 31
+PRODUCT_SHIPPING_API_LEVEL := 32
 
 # VNDK API
 PRODUCT_TARGET_VNDK_VERSION := 33
@@ -40,3 +51,43 @@ PRODUCT_SOONG_NAMESPACES += $(DEVICE_PATH)
 
 TWRP_REQUIRED_MODULES += \
     miui_prebuilt
+
+# Additional Libraries
+TARGET_RECOVERY_DEVICE_MODULES += \
+    libion \
+    libxml2 \
+    vendor.display.config@1.0 \
+    vendor.display.config@2.0 \
+    libdisplayconfig.qti \
+    android.hardware.keymaster@4.1
+
+RECOVERY_LIBRARY_SOURCE_FILES += \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libion.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libxml2.so \
+    $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/vendor.display.config@1.0.so \
+    $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/vendor.display.config@2.0.so \
+    $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/libdisplayconfig.qti.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.keymaster@4.1.so
+
+# F2FS
+PRODUCT_PACKAGES += \
+    mkfs.f2fs \
+    fsck.f2fs \
+    fibmap.f2fs
+
+PRODUCT_PACKAGES += \
+    zip \
+    keycheck
+
+TW_OVERRIDE_SYSTEM_PROPS += "ro.bootimage.build.fingerprint;\
+    ro.build.fingerprint;\
+    ro.build.description;\
+    ro.vendor.build.fingerprint;\
+    ro.system.build.date;\
+    ro.system.build.date.utc;\
+    ro.system.build.version.incremental;\
+    ro.system.build.fingerprint;\
+    ro.build.ab_update;\
+    ro.build.version.sdk;\
+    ro.build.date;\
+    ro.build.date.utc"

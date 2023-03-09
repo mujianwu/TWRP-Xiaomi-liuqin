@@ -76,6 +76,7 @@
             <name>IComponentStore</name>
             <instance>default</instance>
             <instance>dolby</instance>
+            <instance>ozoaudio</instance>
             <instance>software</instance>
         </interface>
     </hal>
@@ -808,7 +809,7 @@
     </hal>
     <hal format="aidl" optional="true">
         <name>vendor.qti.hardware.radio.ims</name>
-        <version>1-8</version>
+        <version>1-9</version>
         <interface>
             <name>IImsRadio</name>
             <instance>imsradio0</instance>
@@ -1320,6 +1321,14 @@
         <version>1.0</version>
         <interface>
             <name>IFbo</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.hardware.fingerprintextension</name>
+        <version>1.0</version>
+        <interface>
+            <name>IXiaomiFingerprint</name>
             <instance>default</instance>
         </interface>
     </hal>
