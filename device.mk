@@ -82,16 +82,3 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     zip \
     keycheck
-
-TW_OVERRIDE_SYSTEM_PROPS += "ro.bootimage.build.fingerprint;\
-    ro.build.fingerprint;\
-    ro.build.description;\
-    ro.vendor.build.fingerprint;\
-    ro.system.build.date;\
-    ro.system.build.date.utc;\
-    ro.system.build.version.incremental;\
-    ro.system.build.fingerprint;\
-    ro.build.ab_update;\
-    ro.build.version.sdk;\
-    ro.build.date;\
-    ro.build.date.utc"
