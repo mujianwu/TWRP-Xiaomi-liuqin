@@ -27,7 +27,7 @@ Camera  | 64 MP (wide), 8 MP (ultrawide), 2 MP (macro), 16 MP (front-wide)
 Works:
 
 - [X] ADB
-- [X] Decryption
+- [] Decryption
 - [X] Display
 - [X] Fasbootd
 - [X] Flashing
