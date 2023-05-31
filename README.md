@@ -22,20 +22,6 @@ Camera  | 64 MP (wide), 8 MP (ultrawide), 2 MP (macro), 16 MP (front-wide)
 
 ![Redmi K60](https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1672220460.25837153.png)
 
-## Features
-
-Works:
-
-- [X] ADB
-- [] Decryption
-- [X] Display
-- [X] Fasbootd
-- [X] Flashing
-- [X] MTP
-- [X] Sideload
-- [X] USB OTG
-- [X] Vibrator
-
 ## To use it:
 
 ```
