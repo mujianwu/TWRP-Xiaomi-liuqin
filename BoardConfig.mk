@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-DEVICE_PATH := device/xiaomi/mondrian
+DEVICE_PATH := device/xiaomi/liuqin
 
 # Building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
@@ -34,7 +34,7 @@ ENABLE_SCHEDBOOST := true
 
 # Bootloader
 PRODUCT_PLATFORM := taro
-TARGET_BOOTLOADER_BOARD_NAME := mondrian
+TARGET_BOOTLOADER_BOARD_NAME := liuqin
 TARGET_NO_BOOTLOADER := true
 TARGET_USES_UEFI := true
 
@@ -166,7 +166,6 @@ TW_INCLUDE_FASTBOOTD := true
 
 # Other TWRP Configurations
 TW_THEME := portrait_hdpi
-TW_FRAMERATE := 120
 RECOVERY_SDCARD_ON_DATA := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
 TW_EXCLUDE_DEFAULT_USB_INIT := true

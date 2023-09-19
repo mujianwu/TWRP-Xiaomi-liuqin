@@ -10,9 +10,9 @@ then
     mkdir -p .repo/local_manifests
 fi
 
-if [ ! -f .repo/local_manifests/local_mondrian.xml ];
+if [ ! -f .repo/local_manifests/local_liuqin.xml ];
 then
-    cp device/xiaomi/mondrian/local_mondrian.xml .repo/local_manifests/local_mondrian.xml
+    cp device/xiaomi/liuqin/local_liuqin.xml .repo/local_manifests/local_liuqin.xml
 fi
 
 if [ ! -d external/gflags ];
